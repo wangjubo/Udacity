@@ -47,7 +47,7 @@ notVisited = 999
 def validate(g, grid, node):
     if(-1 < node[1] < len(grid) and -1 < node[2] < len(grid[0]) 
        and grid[node[1]][node[2]] == 0
-       and g[node[1]][node[2]] == 999):
+       and g[node[1]][node[2]] == notVisited):
         return True
     return False    
     
@@ -61,7 +61,7 @@ def search(grid, init, goal,cost):
     for i in range(len(grid)):
         newRow = []
         for j in range(len(grid[0])):
-            newRow.append(999)
+            newRow.append(notVisited)
         g.append(newRow)
     
     waiting_list = [[0, init[0], init[1]]]
