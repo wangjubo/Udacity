@@ -10,9 +10,14 @@ This is the 1st project to detect and annotate lane lines in images and videos u
 
 Performance
 ---
-[![CarND-LaneLines-P1 solidYellowLeft](http://img.youtube.com/vi/R-gGHl1ou4k/0.jpg)](http://www.youtube.com/watch?v=R-gGHl1ou4k)
-[![CarND-LaneLines-P1 solidWhiteRight
+### Solid white line right
+[![CarND-LaneLines-P1 solidWhiteRight](http://img.youtube.com/vi/R-gGHl1ou4k/0.jpg)](http://www.youtube.com/watch?v=R-gGHl1ou4k)
+
+### Solid yelow line left
+[![CarND-LaneLines-P1 solidYellowLeft
 ](http://img.youtube.com/vi/HMOAfEuUlek/0.jpg)](http://www.youtube.com/watch?v=HMOAfEuUlek)
+
+### Challenge case
 [![CarND-LaneLines-P1 challenge
 ](http://img.youtube.com/vi/9T6q1XwKXqY/0.jpg)](http://www.youtube.com/watch?v=9T6q1XwKXqY)
 
