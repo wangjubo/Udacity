@@ -11,4 +11,9 @@ This is the 1st project to detect and annotate lane lines in images and videos u
 Performance
 ---
 Test image
-[test image](SelfDrivingCarNanoDegree/test_images/solidWhiteCurve.jpg)
+<img src="test_images/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
+
+<video width="320" height="240" controls>
+<source src="test_videos_outputsolidWhiteRight.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
