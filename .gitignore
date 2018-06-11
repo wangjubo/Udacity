@@ -46,7 +46,3 @@ coverage.xml
 docs/_build/
 # PyBuilder
 target/
-# image / video files
-*.jpg
-*.png
-*.mp4
