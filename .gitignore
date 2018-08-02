@@ -46,3 +46,13 @@ coverage.xml
 docs/_build/
 # PyBuilder
 target/
+# python pickle files
+*.p
+# data files
+*.gz
+# check point files
+*.ckpt.*
+# system file
+*.DS_Store
+# dataset files
+datasets/
