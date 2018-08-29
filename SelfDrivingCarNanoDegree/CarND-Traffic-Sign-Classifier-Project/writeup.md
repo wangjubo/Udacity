@@ -132,7 +132,7 @@ As long as training accuracy is not too much higher than validation accuracy, an
 
 Here are five German traffic signs that I found on the web:
 
-![max_speed_limit_70#4.png](max_speed_limit_70#4.png) ![max_speed_limit_50#2.png](max_speed_limit_50#2.png)![no_over_passing#9.png](no_over_passing#9.png) ![do_not_enter#17.png](do_not_enter#17.png) ![priority_road#12.png](priority_road#12.png) 
+![max_speed_limit_70#4.png](max_speed_limit_70_4.png) ![max_speed_limit_50#2.png](max_speed_limit_50_2.png)![no_over_passing#9.png](no_over_passing_9.png) ![do_not_enter#17.png](do_not_enter#_17.png) ![priority_road#12.png](priority_road_12.png) 
 
 The 2nd image might be difficult to classify because the contrast in the image is not very high, when converted to grey, this contract maybe even lower.
 
