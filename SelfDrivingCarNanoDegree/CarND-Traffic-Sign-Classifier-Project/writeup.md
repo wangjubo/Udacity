@@ -41,6 +41,10 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 ![alt text](explore_class_examples.png)
 
+I further plotted the histogram for each class, finding that the distribution is very unbalanced: some classes have ~2000 samples, whereas others have less than 250 samples, almost different by a factor of 10. Augmentation images should be added for images with very few samples.
+
+![alt text](explore_class_histogram.png)
+
 ### Design and Test a Model Architecture
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
@@ -85,9 +89,9 @@ To train the model, I used an Adam Optimizer, the batch size is 32. I typically 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of 0.997
-* validation set accuracy of 0.944
-* test set accuracy of 0.926
+* training set accuracy of 0.669
+* validation set accuracy of 0.939
+* test set accuracy of 0.932
 
 ![alt text](validation_accuracy_per_iteration.png)
 
@@ -105,7 +109,21 @@ I noticed the training accuracy almost reached 0.99, while validation accuracy i
 
 Then, I also added the dropout layer to reduce overfit, with 0.8 keep rate, still, not consistently getting >0.93 accuracy.
 
-Finally, I found the trick is to add dropout layers with 0.5 keep rate, then I can consistently get >0.94 validation accuracy. Basically, the problem was still overfitting.
+I found the trick is to add dropout layers with 0.5 keep rate, then I can consistently get 0.93-0.94 validation accuracy. Basically, the problem was still overfitting.
+
+After first submission, I further added histogram equalization to training sets, for classes where less than 500 images are available.
+
+I then augmented classes with still less than 1000 samples by making variations of original images. Random viriation include the following:
+
+1. Crop images from each side by 0 to 16px (randomly chosen)
+2. Horizontally flip 50% of the images
+3. Blur images with a sigma of 0 to 3.0
+
+After these changes, I saw the validation accuracy improved from around 0.93 to 0.94-0.95.
+
+The training accuracy is low since I added histogram equalized images, reduced the possibility of over fitting the model.
+
+I expect adding more augmentation variations (e.g. more rotation, sheer) should further improve the accuracy.
 
 * Which parameters were tuned? How were they adjusted and why?
 Number of nodes in each convolution layer, in fully connected layers, and dropout rate. The former 2, the more the better for accuracy, but longer training time; the later one (dropout rate) needs to hit a balance between overfit and underfit.
@@ -136,6 +154,8 @@ Here are five German traffic signs that I found on the web:
 
 The 2nd image might be difficult to classify because the contrast in the image is not very high, when converted to grey, this contract maybe even lower.
 
+All the images don't have significant background Objects, there're not multiple Signs in one image either, so in general, they should be easy to the algorithm.
+
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
@@ -143,13 +163,13 @@ Here are the results of the prediction:
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Speed limit (70km/h)  | Speed limit (70km/h)							| 
-| Speed limit (80km/h)	| Speed limit (50km/h)  						|
+| Speed limit (80km/h)	| Speed limit (80km/h)  						|
 | No passing			| No passing									|
 | No entry	      		| No entry	    				 				|
 | Priority road			| Priority road      							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of 92% accuracy.
+The model was able to correctly recognize all of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 92% accuracy.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
@@ -170,15 +190,3 @@ For the second image, the model is somehow over too confident regarding 8 as 5. 
 The rest 3 all have very certain outputs.
 
 How to reduce the high certainty of all these images? That's an open question.
-
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-#### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
-
-From the layer 1 of the trained model, we can see different feature maps seem to cast shadow from different directions. Some has edge detector like outcome. However, I cannot directly tell why these feature maps are chosen, compared to the randomly initialized model value.
-
-##### Layer 1 with trained model (Convolutional. Input = 32x32x1. Output = 28x28x6.)
-![alt text](visualize_cnn_layer1_with_trained_model.png)
-
-##### Layer 1 with randomly initialized model (Convolutional. Input = 32x32x1. Output = 28x28x6.)
-![alt text](visualize_cnn_layer1_with_randomly_initialized_model.png)
-
