@@ -185,7 +185,7 @@ For the second image, the model is somehow over too confident regarding 8 as 5. 
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .989         			| Speed limit (50km/h)  						| 
+| .989         			| Speed limit (80km/h)  						| 
 
 The rest 3 all have very certain outputs.
 
